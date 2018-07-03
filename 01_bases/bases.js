@@ -305,7 +305,7 @@ if (!test) {
 var varA = 1,
     varB = '1';
 
-    if ( varA == varB ) {
+    if ( varA === varB ) {
         //  varA et varB valent toutes les deux 1 en valeur ; la condition avec == est donc vraie
         document.write('Egalité en valeur uniquement <br>')
     } else {    
@@ -319,3 +319,40 @@ var varA = 1,
     } else {    
         document.write('Différence en valeur OU en type <br>')
     }
+
+//----------
+//Condition dite ternaire 
+// la condition ternaire est une autre syntaxe de la condition if ... else en trois parties
+
+var voiture = 'Renault';
+
+var origine = (voiture = 'Renault') ? 'origine France<br>' : 'autre origine<br>' // comme une question que l'on pose est-ce vrai ? 
+// la condition ternaire s'écrit avec un ? qui remplace le if, et une : qui remplace le else
+
+document.write(origine);
+
+//----------
+// isNaN : is Not a Number
+//  Nan  pour Not a Number on le voit dans la console
+
+console.log(2 * 'coucou');
+
+// les opérateurs d'égalité (== ou ===) ne peuvent pas être utilisées pour tester si une valeur est NaN. Il faut utiliser isNaN();
+
+var annee = '2018'; // string
+if ( isNaN(annee) ) {
+    // condition fausse car 2018 est bien un numeber après conversion on entre donc dans le else
+    document.write('Ce n\'est pas un number après conversion <br>');
+} else {
+    document.write ('C\'est un number après conversion <br>');
+}
+
+
+//  le contraire
+var annee = ' juillet 2018'; // string
+if ( isNaN(annee) ) {
+    // ici la condition est vraie on entre donc ici
+    document.write('Ce n\'est pas un number après conversion <br>');
+} else {
+    document.write ('C\'est un number après conversion <br>');
+}
