@@ -546,8 +546,6 @@ document.write('<p class="suite">...</p>');
 // -----------------------
 // 11 - les fonctions utilisateurs
 //------------------------
-
-
 document.write('<h2> les fonctions utilisateurs</h2>');
 
 // Des fonctions sont des morceaux de code encapsulés dans des accolades et portant un nom. Elles sont appelées par leur nom quand on a besoin d'exécuter tout le code qui s'y trouve
@@ -586,10 +584,266 @@ function direBonjour(prenom, nom) {
  
  direBonjour ('Alice', 'Dupont');
 
- function d(param) {
-    document.write( param + '<br>');
+ function pCitation(param) {
+    document.write( '<p class="citation">' + param + '</p>' );
  }
  
- d('<p>Test de notre fonction</p>');
+ pCitation('Test de notre fonction');
 
 //  faitCode ('<p>coucou</p>');
+
+//----------
+// Préambule à l'exo 
+// nous avons la possibilité d'utiliser une autre fonction, ici pCitation dans les instructions de cette fonction
+function meteo(saison) {
+    pCitation('Nous sommes en ' + saison + '.');
+}
+
+meteo ('été');
+meteo ('printemps');
+
+document.write('<hr>');
+
+
+function meteoExo (saison)  {
+    
+    if (saison == 'été' || saison == 'automne' || saison == 'hiver') {
+        pCitation ('Nous sommes en ' + saison + '.');
+    } else {
+        pCitation ('Nous sommes au ' + saison + '.');
+    }
+}
+
+meteoExo ('été');
+meteoExo ('printemps');
+meteoExo ('hiver');
+meteoExo ('rezr');
+//  || 'automne' || 'hiver'
+
+// (saison == 'printemps')
+
+//----------
+// Le mot clef return qui permet de sortir une valeur d'une fonction
+//  return permet de SORTIR la valeur de resultat de la fonction il retourne cette valeur à l'endroit où la fonction est appelée
+function somme (a, b) {
+    var resultat = a + b;
+    return resultat;
+}
+
+pCitation ( 'la somme de 2 + 4 est égale à ' + somme (2, 4) ); // on récupère ici la valeur 6 de resultat grâce au return qui se trouve dans la fonction somme
+// pour moi
+
+function suite () {
+    document.write('<p class="suite">...</p>');
+}
+suite ();
+
+// -----------------------
+// 13 - La portée des variables
+//------------------------
+document.write('<h2> La portée des variables</h2>');
+// Selon l'endroit et la façon dont une variable est déclarée, elle pourra être accessible partout dans le script ou uniquement dans une portion limitée du code des fonctions. On parle de portée des variables (scope en anglais)
+
+// Une variable déclarée SANS le mot clef var (façon implicite) ; elle est accessible PARTOUT dans le script, y compris au sein des fonctions elle est dite GLOBALE
+
+// une variable déclarée AVEC le mot clef var 
+// à l'extérieur d'une fonction elle sera GLOBALE 
+// à l'intérieur d'une fonction elle sera LOCALE donc accessible uniquement dans cette fonction
+
+var animal = 'Loup'; // globale
+ function jungle() {
+     var animal = 'Tigre'; // locale
+     return animal;
+ }
+ pCitation (animal);
+ pCitation (jungle());
+
+suite();
+
+var oiseau ='Aigle'; // global
+function ciel() {
+    oiseau = 'Faucon'; // globale car il n'y a pas 'var' devant 
+    return oiseau;
+}
+
+pCitation(oiseau); // vaut Aigle car globale 
+
+pCitation(ciel());// faucon grâce au return  et on change le contenu de la variable globale pour y mettre Faucon
+
+pCitation(oiseau);// pas conséquent la variable oiseau contient désormais Faucon
+
+// -----------------------
+// 14 - Les arrays les tableaux
+//------------------------
+
+document.write('<h2> Les tableaux</h2>');
+
+var monTableau = ['Charles', 'Magalie', 'Zakir', 'Elric', 92]; 
+//  chaque élément à un INDICE Charles le 0 Magalie le 1 etc.
+
+pCitation (monTableau[0]);
+
+//  remplacer la valeur Elric par la valeur Alphonsine
+monTableau[3] = 'Alphonsine';
+
+pCitation (monTableau.length); // compter les éléments d'un tableau
+
+// parcourir un array avec une bloucle for
+for (var i = 0; i < monTableau.length ; i++) {
+    pCitation(monTableau[i]);
+}
+
+suite();
+//----------
+// Array multidimenssionel
+//  un array multidimensionnel est un trableau qui contient un plusieurs tableaux
+
+var deuxDimensions = [ ['fraises', 'pommes', 'bananes'], ['tomates', 'carottes', 'courgettes'] ];
+
+pCitation (deuxDimensions[0][2]);
+
+suite();
+
+//----------
+
+var tableauTailles = ['S', 'M', 'L', 'XL'];
+// la variable pour le tableau des tailles
+for (var i = 0; i < tableauTailles.length ; i++) {
+    pCitation(tableauTailles[i]);
+}
+
+document.write('<select>');
+    for ( var i = 0; i < tableauTailles.length ; i++ ) { 
+        document.write('<option>' + tableauTailles[i] + '</option>');
+    }
+document.write('</select>');
+
+document.write('<p class="suite">...</p>');
+
+//----------
+// pop, push, unshift
+// ajouter ou supprimer des valeurs au début ou à la fin d'un array
+
+tableauTailles.push('XXL');// ajoute un élément à la fin du tableau
+console.log (tableauTailles); // affichage du tableau en entier dans la console
+
+tableauTailles.unshift('XS'); // retire le dernier
+console.log (tableauTailles); // affichage du tableau en entier dans la console
+
+tableauTailles.pop (); // retire le dernier élément
+console.log (tableauTailles); 
+
+tableauTailles.shift (); // retire le premier élément
+console.log (tableauTailles); 
+
+// -----------------------
+// 15 - Les objets
+//------------------------
+
+
+// Un objet est un ensemble de propriétés qui correspondent à l'association d'un nom et d'une valeur. Cette valeur peut être de n'importe quel type (string, number, booléen, array, objet.....)
+
+// De plus, la valeur de la propriété peut être une fonction. dans ce cas cette propriété s'appelle une méthode (il s'gait simplement d'une fonction dans un objet).
+
+// Les propriétés et les méthodes d'un objet s'appellent les "membres" de cet objet.
+
+
+// création d'un objet
+
+var personnage = {
+            nom : 'Tintin',// paire "propriété : valeur" suvie d'une ,
+            animale : 'chien',
+            amis : ['Haddock', 'Tournesol', 'Dupond & Dupont'],
+            age : 35 /* pas de virgule après le dernier */
+        }; 
+ pCitation (personnage.nom); // affiche la valeur de la propriété d'un objet
+
+ pCitation (personnage['nom']); // autre manière de faire
+
+ // remplissage d'une propriété
+
+ personnage.animal =  'Milou';
+
+ personnage['animal'] = 'Milou';
+
+//  pour afficher Tournesol qui est dans un array dans une propriété
+
+pCitation(personnage.amis[1]);
+//  ou d'une autre manière
+pCitation(personnage['amis'][1]);
+
+//----------
+// créaton d'un objet avec une méthode
+var maVoiture = {
+        marque : 'Peugeot',
+        couleur : 'Orange',
+        motorisation : {
+            energie :'diesel',
+            puissance : '110CV',
+            garantie : true
+        },// fin motorisation
+        afficherOrigine : function () {//afficherOrigine est une méthode de ma voiture
+        document.write('origine française<br>')
+    }// fin function 
+};// fin déclaration objet ma voiture
+
+// on identifie les méthodes ()au mot clef fucntion qui permet d'y mettre le code qu'elle doit exécuter (tout comme une fonction)
+
+pCitation (maVoiture.marque);// affiche peugeot
+document.write(maVoiture.couleur);//affiche orange
+
+suite();
+
+maVoiture.afficherOrigine();// affiche le texte contenu dans la fonction
+
+pCitation(maVoiture.motorisation['energie']);
+pCitation(maVoiture.motorisation.energie);
+
+//----------
+// La boucle for in :
+// elle permet de parcourir les objets et de récupérer tous les membres
+// ex. nous allons parcourir l'objet qui s'appelle maVouture.motorisation
+suite();
+// 2 fonctions pour faire une ul
+function ouvreUL () {
+    document.write('<ul>');
+}
+function fermeUL () {
+    document.write('</ul>');
+}
+// affichage 
+ouvreUL ();
+for (var specifites in maVoiture.motorisation) {
+    document.write ('<li>' + specifites + ' a pour valeur ' + maVoiture.motorisation[specifites] + '</li>');
+}
+fermeUL();
+
+// membre s'appelle un "référent" : c'est sa place dans la syntaxe du for...in qui détermine que "membre" récupère le nom des propriétés à chaque tour de boucle. Ainsi, maVoiture.motorisation[membre] permet de récupérer la valeur correspondante à la propriété contenu dans "membre". Note : on ne met pas de quote à membre dans les [] car il s'agit d'une variable.
+
+
+//--------------------------
+// 16- Propriété et méthodes de l'objet string
+//--------------------------
+
+document.write('<h2> Propriété et méthodes de l\'objet string </h2>');
+
+// propriété length : 
+animal = 'Loup';
+pCitation(animal.length);  // affiche 4 soit le nombre de caractère du string contenu dans la variable animal
+
+// méthode trim() : 
+var adresse = '          16, rue de Seine          ';
+pCitation('adresse avec des espaces : ' + adresse.length);  // longueur y compris des espaces
+pCitation('adresse sans les espaces : ' + adresse.trim().length);  // la méthode trim() supprime les espaces en début et en fin de chaîne (utile pour nettoyer les données d'un formulaire)
+
+// Notez qu'une méthode comporte toujours des ().
+
+//------------------------
+// Trouvez les ressources sur le net : 
+// Le site de référence du JS : MDN
+// https://developer.mozilla.org
+
+// Pour aller plus loin : 
+// openclassrooms.com
+// codecademy.com     cours, forum, exercices
+//developer.mozilla.org
