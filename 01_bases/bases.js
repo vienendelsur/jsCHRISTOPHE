@@ -12,7 +12,7 @@ sur plusieurs lignes
 // 2 - affichage
 // -----------------------------------
 
-document.write('Mon premier message en JS'); // affichage dans le navigateur attention façon très moche de faire du html
+document.write('Mon premier message en JavaScript'); // affichage dans le navigateur attention façon très moche de faire du html
 
 document.write('<h1>Les base du JS</h1>'); // on peut mettre des balises html elles sont interprétées et donc insérée dans le html
 
