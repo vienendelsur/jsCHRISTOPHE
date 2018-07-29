@@ -46,7 +46,7 @@ maBoite = 10; // on affecte une variable avec le signe = elle contient 10 = est 
 
 document.write(maBoite); // on affiche le contenu de la variable sans apostrophe sans quotes
 
-var maBoite = 10 // on peut déclarer et affecter une variable en même temps nous retiendrons cette écriture
+var maBoite = 10; // on peut déclarer et affecter une variable en même temps nous retiendrons cette écriture
 
 monAutreBoite = 'bonjour'; // sans var déclaration non conventionnelle de plus ce n'est pas la même siginifcation cf. portée des variables
 
@@ -135,7 +135,7 @@ document.write('<br>');
 document.write('<h2>Les constantes</h2>');
 // les constantes sont comme des variables dont la valeur ne peut pas être modifiée. Elles permettent de protéger cette valeur nécessaire au bon fonctionnement du script
 
-const CHANGE_PAS = 'ma constante impossible à modifier'; // par conventino les constantes s'on en MAJUSCULES
+const CHANGE_PAS = 'ma constante impossible à modifier'; // par convention les constantes sont en MAJUSCULES
 
 document.write(CHANGE_PAS);
 document.write('<br>');
@@ -155,7 +155,7 @@ var prenom ='Bruce',
     document.write(prenom + ' ' + nom + '<br>'); // concatène la variable prénom avec un espace, la variable nom et la balise br
 
     var personnage = prenom + ' ' + nom + '<br>'; // on peut concaténer des éléments au sein d'une variable
-    document.write
+//    document.write();
 
 
 // -----------------------------------
